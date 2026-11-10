@@ -1,154 +1,154 @@
 {
-    "\\$schema": "https://playground.wordpress.net/blueprint-schema.json",
-    "meta": {
-        "title": "Shahla Picks - preview",
-        "author": "Rith968"
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Shahla Picks - preview",
+    "author": "Rith968"
+  },
+  "landingPage": "/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-1",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.001"
+      }
     },
-    "landingPage": "/",
-    "preferredVersions": {
-        "php": "8.3",
-        "wp": "latest"
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-2",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.002"
+      }
     },
-    "features": {
-        "networking": true
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-3",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.003"
+      }
     },
-    "steps": [
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-1",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.001"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-2",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.002"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-3",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.003"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-4",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.004"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-5",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.005"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-6",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.006"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-7",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.007"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-8",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.008"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-9",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.009"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-10",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.010"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-11",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.011"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-12",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.012"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-13",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.013"
-            }
-        },
-        {
-            "step": "writeFile",
-            "path": "/wordpress/sp-part-14",
-            "data": {
-                "resource": "url",
-                "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.014"
-            }
-        },
-        {
-            "step": "runPHP",
-            "code": "<?php $o = fopen('/wordpress/sp-site.zip', 'wb'); for ($i = 1; $i <= 14; $i++) { $f = '/wordpress/sp-part-' . $i; fwrite($o, file_get_contents($f)); unlink($f); } fclose($o);"
-        },
-        {
-            "step": "importWordPressFiles",
-            "wordPressFilesZip": {
-                "resource": "vfs",
-                "path": "/wordpress/sp-site.zip"
-            }
-        },
-        {
-            "step": "installPlugin",
-            "pluginData": {
-                "resource": "wordpress.org/plugins",
-                "slug": "woocommerce"
-            },
-            "options": {
-                "activate": true
-            }
-        },
-        {
-            "step": "runPHP",
-            "code": "<?php require '/wordpress/wp-load.php'; global $wpdb; $old = 'https://wpsandbox.wordpress.net/scope:xjvt-fpot-unbn'; $new = untrailingslashit( home_url() ); if ( $old !== $new ) { $wpdb->query( $wpdb->prepare( \"UPDATE {$wpdb->posts} SET guid = REPLACE(guid, %s, %s), post_content = REPLACE(post_content, %s, %s)\", $old, $new, $old, $new ) ); foreach ( $wpdb->get_results( $wpdb->prepare( \"SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE meta_value LIKE %s\", '%' . $wpdb->esc_like( $old ) . '%' ) ) as $r ) { if ( ! is_serialized( $r->meta_value ) ) { $wpdb->update( $wpdb->postmeta, array( 'meta_value' => str_replace( $old, $new, $r->meta_value ) ), array( 'meta_id' => $r->meta_id ) ); } } } @unlink( '/wordpress/sp-site.zip' ); wp_cache_flush(); flush_rewrite_rules();"
-        }
-    ]
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-4",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.004"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-5",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.005"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-6",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.006"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-7",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.007"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-8",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.008"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-9",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.009"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-10",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.010"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-11",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.011"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-12",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.012"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-13",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.013"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/sp-part-14",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Rith968/shahla-picks-preview/main/site.zip.014"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php $o = fopen('/wordpress/sp-site.zip', 'wb'); for ($i = 1; $i <= 14; $i++) { $f = '/wordpress/sp-part-' . $i; fwrite($o, file_get_contents($f)); unlink($f); } fclose($o);"
+    },
+    {
+      "step": "importWordPressFiles",
+      "wordPressFilesZip": {
+        "resource": "vfs",
+        "path": "/wordpress/sp-site.zip"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "woocommerce"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; global $wpdb; $old = 'https://wpsandbox.wordpress.net/scope:xjvt-fpot-unbn'; $new = untrailingslashit( home_url() ); if ( $old !== $new ) { $wpdb->query( $wpdb->prepare( \"UPDATE {$wpdb->posts} SET guid = REPLACE(guid, %s, %s), post_content = REPLACE(post_content, %s, %s)\", $old, $new, $old, $new ) ); foreach ( $wpdb->get_results( $wpdb->prepare( \"SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE meta_value LIKE %s\", '%' . $wpdb->esc_like( $old ) . '%' ) ) as $r ) { if ( ! is_serialized( $r->meta_value ) ) { $wpdb->update( $wpdb->postmeta, array( 'meta_value' => str_replace( $old, $new, $r->meta_value ) ), array( 'meta_id' => $r->meta_id ) ); } } } @unlink( '/wordpress/sp-site.zip' ); wp_cache_flush(); flush_rewrite_rules();"
+    }
+  ]
 }
